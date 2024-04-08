@@ -1,0 +1,256 @@
+[gd_scene load_steps=20 format=3 uid="uid://bpv6keitibiwp"]
+
+[ext_resource type="PackedScene" uid="uid://b48ir3fokttup" path="res://player.tscn" id="1_cee55"]
+[ext_resource type="Script" path="res://survivor_game.gd" id="1_sgjuw"]
+[ext_resource type="PackedScene" uid="uid://dc2ic1v1hjh6o" path="res://pine_tree.tscn" id="2_t0efe"]
+[ext_resource type="Script" path="res://Clock.gd" id="4_fo4ix"]
+
+[sub_resource type="Curve2D" id="Curve2D_b5pu6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, -144, 0, 0, 0, 0, -53, 1209, 0, 0, 0, 0, 2025, 1225, 0, 0, 0, 0, 2024, -145, 0, 0, 0, 0, -64, -144)
+}
+point_count = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bst5"]
+bg_color = Color(0.423529, 0.67451, 0.360784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbi66"]
+bg_color = Color(0.258824, 0.517647, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5kj8"]
+bg_color = Color(0.376471, 0.678431, 0.439216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8rlp"]
+bg_color = Color(0.2, 0.690196, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxm0v"]
+bg_color = Color(0.796078, 0.541176, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgisi"]
+bg_color = Color(0.266667, 0.552941, 0.878431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5nsc"]
+bg_color = Color(0.164706, 0.364706, 0.627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shs0u"]
+bg_color = Color(0.760784, 0.556863, 0.286275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxdge"]
+bg_color = Color(0.984314, 0.345098, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3p83"]
+bg_color = Color(0.729412, 0.207843, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jso1"]
+bg_color = Color(0.886275, 0.47451, 0.215686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lntuq"]
+bg_color = Color(0.721569, 0.337255, 0.113725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bllvs"]
+bg_color = Color(0.776471, 0.670588, 0.160784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amug3"]
+bg_color = Color(0.52549, 0.454902, 0.137255, 1)
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_sgjuw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1942.0
+offset_bottom = 1120.0
+
+[node name="Clock" type="Label" parent="CanvasLayer"]
+offset_left = 879.0
+offset_top = 23.0
+offset_right = 1032.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0.831373, 0.952941, 0.341176, 1)
+theme_override_font_sizes/font_size = 60
+text = "00:00"
+script = ExtResource("4_fo4ix")
+
+[node name="Player" parent="." instance=ExtResource("1_cee55")]
+position = Vector2(902, 523)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-902, -523)
+curve = SubResource("Curve2D_b5pu6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-64, -144)
+rotation = 1.56267
+
+[node name="PineTree" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(476, 349)
+
+[node name="PineTree2" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(944, 873)
+
+[node name="PineTree3" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(1492, 289)
+
+[node name="PineTree4" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(284, 645)
+
+[node name="PineTree5" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(312, 177)
+
+[node name="PineTree6" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(1660, 1021)
+
+[node name="PineTree7" parent="." instance=ExtResource("2_t0efe")]
+position = Vector2(1596, 201)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.576471)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 180
+text = "Game Over"
+
+[node name="RestartButton" type="Button" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 836.0
+offset_right = 872.0
+offset_bottom = 867.0
+scale = Vector2(0.981036, 1.06079)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_1bst5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sbi66")
+text = "Restart"
+
+[node name="BoxSpawnTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="TreasureOpen" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+layer = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="TreasureOpen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.341176, 0.341176, 0.341176, 0.592157)
+
+[node name="Label" type="Label" parent="TreasureOpen/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -229.0
+offset_right = 229.0
+offset_bottom = 152.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.890196, 0.827451, 0.298039, 1)
+theme_override_font_sizes/font_size = 111
+text = "TREASURE!!!"
+
+[node name="HealthButton" type="Button" parent="TreasureOpen/ColorRect"]
+layout_mode = 0
+offset_left = 1241.0
+offset_top = 616.0
+offset_right = 1441.0
+offset_bottom = 706.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_p5kj8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_s8rlp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xxm0v")
+action_mode = 0
+button_mask = 7
+text = "Health"
+
+[node name="SpeedButton" type="Button" parent="TreasureOpen/ColorRect"]
+layout_mode = 0
+offset_left = 1584.0
+offset_top = 616.0
+offset_right = 1784.0
+offset_bottom = 707.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_lgisi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p5nsc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_shs0u")
+text = "Speed"
+
+[node name="BulletRangeButton" type="Button" parent="TreasureOpen/ColorRect"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 616.0
+offset_right = 294.0
+offset_bottom = 706.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_kxdge")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w3p83")
+text = "Range"
+
+[node name="BulletSpeedButton" type="Button" parent="TreasureOpen/ColorRect"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 616.0
+offset_right = 691.0
+offset_bottom = 706.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_1jso1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lntuq")
+text = "Bullet Speed"
+
+[node name="BulletPierceButton" type="Button" parent="TreasureOpen/ColorRect"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 616.0
+offset_right = 1070.0
+offset_bottom = 706.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bllvs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_amug3")
+text = "Pierce"
+
+[connection signal="add_health" from="." to="Player" method="_on_game_add_health"]
+[connection signal="add_speed" from="." to="Player" method="_on_game_add_speed"]
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="treasure_opened" from="Player" to="." method="_on_player_treasure_opened"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/ColorRect/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="timeout" from="BoxSpawnTimer" to="." method="_on_box_spawn_timer_timeout"]
+[connection signal="pressed" from="TreasureOpen/ColorRect/HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="pressed" from="TreasureOpen/ColorRect/SpeedButton" to="." method="_on_speed_button_pressed"]
+[connection signal="pressed" from="TreasureOpen/ColorRect/BulletRangeButton" to="." method="_on_bullet_range_button_pressed"]
+[connection signal="pressed" from="TreasureOpen/ColorRect/BulletSpeedButton" to="." method="_on_bullet_speed_button_pressed"]
+[connection signal="pressed" from="TreasureOpen/ColorRect/BulletPierceButton" to="." method="_on_bullet_pierce_button_pressed"]

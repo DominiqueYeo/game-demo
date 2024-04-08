@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cstvgkr7tsr5i"]
+
+[ext_resource type="PackedScene" uid="uid://dop0bf6qk7hfu" path="res://mob.tscn" id="1_dp6u7"]
+[ext_resource type="Script" path="res://mob_2.gd" id="2_udfrp"]
+
+[node name="Mob2" groups=["mobs2"] instance=ExtResource("1_dp6u7")]
+modulate = Color(1, 0.0705882, 1, 1)
+script = ExtResource("2_udfrp")

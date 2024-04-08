@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjw05i67bfgwf"]
+
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_ebtmb"]
+
+[node name="HappyBoo2" instance=ExtResource("1_ebtmb")]
+
+[node name="Colorizer" parent="." index="2"]
+modulate = Color(0.843137, 0.568627, 0.952941, 1)
